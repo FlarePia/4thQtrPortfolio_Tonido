@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="q41gCsTonido.css">
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <!-- Form for adding a new movie -->
+            <h1>Add a Movie</h1>
+            <div>
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <label for="year">Year:</label><br>
+                <input type="text" id="year" name="year" required><br><br>
+
+                <label for="genre">Genre:</label><br>
+                <select id="genre" name="genre" required>
+                    <option value="option1">Action</option>
+                    <option value="option2">Comedy</option>
+                    <option value="option3">Drama</option>
+                </select> <br><br>
+
+                <label for="rating">Rating:</label><br>
+                <div class="star-rating" data-rating="4">
+                    <span class="star" id="star1" onclick="updateRating(0, 'star1')">&#9734;</span>
+                    <span class="star" id="star2" onclick="updateRating(1, 'star2')">&#9734;</span>
+                    <span class="star" id="star3" onclick="updateRating(2, 'star3')">&#9734;</span>
+                    <span class="star" id="star4" onclick="updateRating(3, 'star4')">&#9734;</span>
+                    <span class="star" id="star5" onclick="updateRating(4, 'star5')">&#9734;</span>
+                </div>
+
+            </div>
+            <button type="submit" onsubmit="submit()" ; return false;>Add Movie</button><br><br>
+            <h1>Movie List </h1>
+            <div id="movie-list">
+                <!-- Movie items will be added hereee -->
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="q41gCsTonido.js"></script>
+</body>
+
+</html>

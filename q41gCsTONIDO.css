@@ -1,0 +1,48 @@
+p {
+    font-size: 30px;
+    line-height: 1.5;
+    font-family: 'Courier New', Courier, monospace;
+    place-items: center;
+}
+
+button {
+    background-color: #52e0e2;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    cursor: pointer;
+    position: center;
+    align-items: center;
+    width: 150px;
+
+}
+
+fieldset {
+    border: 2px solid #52e0e2;
+    padding: 20px;
+    margin: 20px;
+    place-items: center;
+}
+
+input,
+select {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #52e0e2;
+    border-radius: 5px;
+    width: 200px;
+    place-items: center;
+
+}
+
+.star-rating {
+    font-size: 24px;
+    /* Adjust size as needed */
+    color: #ddd;
+    /* Color for unchecked stars */
+}
+
+.star {
+    color: orange;
+    /* Color for checked stars */
+}
