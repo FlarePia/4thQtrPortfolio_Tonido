@@ -30,7 +30,9 @@ function updateRating(index, starId) {
 }
 
 
-let input = [];
+const input = {
+
+};
 let storedInput = localStorage.getItem("input");
 
 if (!storedInput) {
@@ -38,21 +40,31 @@ if (!storedInput) {
     storedInput = "[]"; // Set storedInput to an empty array string
 }
 
-input = JSON.parse(storedInput);
+otherinput = JSON.parse(storedInput);
 showMovies(); // Display movies from local storage on page load
 
+function makeString(title, year, genre) {
+    return `${title} (${year}) - ${genre}`;
+}
 
 function submitMovie() {
-    let newInput = {};
-    console.log("haiii");
 
+    let newInput = {
+        title: document.getElementById("title").value,
+        year: document.getElementById("year").value,
+        genre: document.getElementById("genre").value,
+        rating: checked.filter(Boolean).length // Use the updated current rating
+    };
 
-    newInput.title = document.getElementById("title").value;
-    newInput.year = document.getElementById("year").value;
-    newInput.genre = document.getElementById("genre").value;
-    newInput.rating = currentRating; // Use the updated current rating
+    let ratings = input[makeString(newInput.title, newInput.year, newInput.genre)]?.rating || []; // Get existing ratings or initialize as empty array
 
-    input.push(newInput);
+    input[makeString(newInput.title, newInput.year, newInput.genre)] = {
+        title: newInput.title,
+        year: newInput.year,
+        genre: newInput.genre,
+        rating: [...ratings, newInput.rating]
+    }
+
     localStorage.setItem("input", JSON.stringify(input));
 
     showMovies();
@@ -63,20 +75,55 @@ function showMovies() {
     let movieList = document.getElementById("movie-list");
     movieList.innerHTML = ""; // Clear existing movie list
 
-    input.forEach(movie => {
+    for (let movie of Object.values(input)) {
         let movieItem = document.createElement("div");
         movieItem.className = "movieitem";
+        const averageRating = Math.round(movie.rating.reduce((a, b) => a + b, 0) / movie.rating.length); // Calculate average rating
         movieItem.innerHTML = `
-            <h3>${movie.title} (${movie.year}) - ${movie.genre}, 
-            Rating: ${"&#9733;".repeat(movie.rating)}${"&#9734;".repeat(5 - movie.rating)}</h3>
+            <h3>${makeString(movie.title, movie.year, movie.genre)}</h3>
+            Rating: <span class = "star">${"&#9733;".repeat(averageRating)}${"&#9734;".repeat(5 - averageRating)}</span></h3>
+            <button type="button" onclick="checkMovie('${makeString(movie.title, movie.year, movie.genre)}')">Delete</button>
         `;
+
         movieList.appendChild(movieItem);
-    })
+    }
 }
 
 let savedInput = JSON.parse(localStorage.getItem("input"));
 console.log(savedInput);
 
 
+/**
+             let button = document.createElement("button");
+        button.textContent = "Click me";
 
+        document.body.appendChild(button);
+ */
+
+function checkMovie(title) {
+    if (confirm("Are you sure you want to delete?")) {
+        alert("Movies cleared!"); // Alert if user confirms
+        deleteMovie(title); // Clear movies if user confirms' 
+        // clearMovie(title);
+    }
+    else {
+        alert("Action cancelled."); // Alert if user cancels
+        return; // Exit the function if user cancels
+    }
+}
+
+function clearMovie(title) {
+    localStorage.removeItem("input"); // Clear movies from local storage
+    inputArray = []; // Clear the input array
+    showMovies(); // Update the movie list display
+}
+
+function deleteMovie(title) {
+    if (input[title]) {
+        delete input[title];
+    }
+
+    localStorage.setItem("input", JSON.stringify(input)); // Update local storage
+    showMovies(); // Update the movie list display
+}
 
