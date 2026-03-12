@@ -30,7 +30,7 @@ function updateRating(index, starId) {
 }
 
 
-input = [];
+let input = [];
 let storedInput = localStorage.getItem("input");
 
 if (!storedInput) {
@@ -42,7 +42,7 @@ input = JSON.parse(storedInput);
 showMovies(); // Display movies from local storage on page load
 
 
-function submit() {
+function submitMovie() {
     let newInput = {};
     console.log("haiii");
 
@@ -56,7 +56,7 @@ function submit() {
     localStorage.setItem("input", JSON.stringify(input));
 
     showMovies();
-    console.log(input);
+    console.log(newInput);
 }
 
 function showMovies() {
@@ -65,11 +65,10 @@ function showMovies() {
 
     input.forEach(movie => {
         let movieItem = document.createElement("div");
-        movieItem.className = "movie-item";
+        movieItem.className = "movieitem";
         movieItem.innerHTML = `
-            <h3>${movie.title} (${movie.year})</h3>
-            <p>Genre: ${movie.genre}</p>
-            <p>Rating: ${"&#9733;".repeat(movie.rating)}${"&#9734;".repeat(5 - movie.rating)}</p>
+            <h3>${movie.title} (${movie.year}) - ${movie.genre}, 
+            Rating: ${"&#9733;".repeat(movie.rating)}${"&#9734;".repeat(5 - movie.rating)}</h3>
         `;
         movieList.appendChild(movieItem);
     })

@@ -19,9 +19,9 @@
 
                 <label for="genre">Genre:</label><br>
                 <select id="genre" name="genre" required>
-                    <option value="option1">Action</option>
-                    <option value="option2">Comedy</option>
-                    <option value="option3">Drama</option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
                 </select> <br><br>
 
                 <label for="rating">Rating:</label><br>
@@ -34,7 +34,7 @@
                 </div>
 
             </div>
-            <button type="submit" onsubmit="submit()" ; return false;>Add Movie</button><br><br>
+            <button type="button" onclick="submitMovie()">Add Movie</button><br><br>
             <h1>Movie List </h1>
             <div id="movie-list">
                 <!-- Movie items will be added hereee -->

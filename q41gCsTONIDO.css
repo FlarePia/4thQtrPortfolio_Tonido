@@ -38,11 +38,18 @@ select {
 .star-rating {
     font-size: 24px;
     /* Adjust size as needed */
-    color: #ddd;
+    color: #eeeded;
     /* Color for unchecked stars */
 }
 
 .star {
-    color: orange;
+    color: rgb(253, 224, 6);
     /* Color for checked stars */
+}
+
+.movieitem {
+    border: black solid 2px;
+    padding: 20px;
+    background-color: rgb(210, 209, 209);
+    margin-bottom: 5px;
 }
