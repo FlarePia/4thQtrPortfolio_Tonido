@@ -1,0 +1,27 @@
+.sidebar{
+    position: relative; 
+    top: 100px; 
+    left: 20px;
+}
+
+.footer {
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+}
+
+.content {
+    position: absolute; 
+    top: 66px; 
+    left: 200px;
+    z-index: 1;
+}
+
+.notice {
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    background: orange;
+    padding: 10px;
+    z-index: 2;
+}
